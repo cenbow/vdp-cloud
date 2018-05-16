@@ -1,58 +1,60 @@
 ##########################################################
-##################  all profile share config  #################
+################## 1 all profile share config  ############
 ##########################################################
 
-service_enabled:
-  rabbitmq: true
-  redis: false
-  mongo: true
-  
-
+container_config:
+  transfer: 
+    enabled: true
+    tool: rabbitmq
+  memory: 
+    enabled: true
+    tool: redis
+  storage: 
+    enabled: true
+    tool: mysql
+  archive: 
+    enabled: true
+    tool: mongodb
 server:
-  port: 8081
-###################  spring 配置  ###################
+  port: 8090
+  
+### spring config  ###################
 
 spring:
   profiles:
-    active: aa
+    active: development
   rabbitmq:
     address: 192.168.3.19
     username: admin
     password: admin
     publisherConfirms: true
-    queueName: testQueue
+    queueName: 
+      transferQ: scdata.transferE.defaultK
+      defaultQ: defaultQ.defaultE
+    exchange:
+      transferE: scdataE
+      defaultE: defaultE
     keys:
-      orderRouting: order
-      orderBounding: order
-    exchange: testExchange
+      scdataK: scdataK
+      defaultK: defaultK
     
-profile:
-  test:
-    userName: my is main environment
-    passWord: this is main environment
-
-###################  mybatis-plus 配置  ###################
+### mybatis-plus config  #################
 
 ---
 ##########################################################
-###################  development profile  ###################
+################### 2 development profile  ################
 ##########################################################
 spring:
-  profiles: dev
-profile:
-  test:
-    passWord: this is development environment
+  profiles: development
 server:
-  port: 8080
+  port: 8081
 
 ---
 
 ##########################################################
-###################  production profile  ###################
+################### 3 production profile  #################
 ##########################################################
 spring:
-  profiles: prod
-profile:
-  test: passWord:this is development environment
+  profiles: production
 server:
   port: 8080
