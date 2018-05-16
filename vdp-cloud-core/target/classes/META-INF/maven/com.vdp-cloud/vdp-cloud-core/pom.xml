@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.vdp-cloud</groupId>
+		<artifactId>vdp-cloud</artifactId>
+		<version>${vdp.cloud.version}</version>
+	</parent>
+	<artifactId>vdp-cloud-core</artifactId>
+	<name>com.vdp-cloud.core</name>
+
+	<dependencies>
+		<!-- 项目之间引用 -->
+		<dependency>
+			<groupId>com.vdp-cloud</groupId>
+			<artifactId>vdp-common</artifactId>
+			<version>${vdp.cloud.version}</version>
+		</dependency>
+		<!-- rabbitmq的jar -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+		<!-- 引入redis的相关jar -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!-- 引入mysql的相关jar
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency> -->
+		
+	</dependencies>
+	
+</project>

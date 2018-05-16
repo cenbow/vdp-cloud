@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.vdp-cloud</groupId>
+		<artifactId>vdp-cloud</artifactId>
+		<version>${vdp.cloud.version}</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.vdp-cloud</groupId>
+			<artifactId>vdp-cloud-core</artifactId>
+			<version>${vdp.cloud.version}</version>
+		</dependency>
+	</dependencies>
+
+	<!-- maven打包配置, 指定启动类 -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.vdp.sc.SCApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+	<artifactId>vdp-cloud-sc</artifactId>
+</project>

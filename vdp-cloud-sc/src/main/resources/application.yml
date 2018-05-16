@@ -1,0 +1,58 @@
+##########################################################
+##################  all profile share config  #################
+##########################################################
+
+service_enabled:
+  rabbitmq: true
+  redis: false
+  mongo: true
+  
+
+server:
+  port: 8081
+###################  spring 配置  ###################
+
+spring:
+  profiles:
+    active: aa
+  rabbitmq:
+    address: 192.168.3.19
+    username: admin
+    password: admin
+    publisherConfirms: true
+    queueName: testQueue
+    keys:
+      orderRouting: order
+      orderBounding: order
+    exchange: testExchange
+    
+profile:
+  test:
+    userName: my is main environment
+    passWord: this is main environment
+
+###################  mybatis-plus 配置  ###################
+
+---
+##########################################################
+###################  development profile  ###################
+##########################################################
+spring:
+  profiles: dev
+profile:
+  test:
+    passWord: this is development environment
+server:
+  port: 8080
+
+---
+
+##########################################################
+###################  production profile  ###################
+##########################################################
+spring:
+  profiles: prod
+profile:
+  test: passWord:this is development environment
+server:
+  port: 8080
