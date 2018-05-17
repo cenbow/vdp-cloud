@@ -1,4 +1,4 @@
-package com.vdp.core.tools.rabbitmq;
+package com.vdp.core.tools.rabbitmq.utils;
 
 import java.util.Collection;
 import java.util.List;

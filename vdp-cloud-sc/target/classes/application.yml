@@ -2,8 +2,22 @@
 ################## 1 all profile share config  ############
 ##########################################################
 
+######  热部署相关配置  ###################
+#热部署生效
+spring.devtools.restart.enabled=true
+#设置重启的目录,添加那个目录的文件需要restart
+spring.devtools.restart.additional-paths=src/main/java
+# 为mybatis设置，生产环境可删除
+restart.include.mapper=/mapper-[\\w-\\.]+jar
+restart.include.pagehelper=/pagehelper-[\\w-\\.]+jar
+#排除那个目录的文件不需要restart
+#spring.devtools.restart.exclude=static/**,public/**
+#classpath目录下的WEB-INF文件夹内容修改不重启
+#spring.devtools.restart.exclude=WEB-INF/**
+
+###### 容器功能相关配置 #################
 containerConfig:
-  transfer: 
+  msgqueue: 
     enabled: true
     tool: rabbitmq
   memory: 
@@ -41,7 +55,9 @@ spring:
     publisherConfirms: false
     virtualHost: /
     queueNames:
-      ##格式为:"exchange类型.数据类型.生产者.消费者",   "数据类型"作为exchange,   "生产者.消费者"作为routeKey,  整个作为queue名称,  "-"是yml中的格式, 请忽略
+      ##"transferQ: topic.scdata.SC.VLR_EVENT"我们定义为队列转发规则
+      ##格式为:"exchange类型.数据类型.生产者.消费者", "数据类型"作为exchange, "生产者.消费者"作为routeKey,  整个作为queue名称, "-"是配置文件中的格式, 请忽略
+      ##冒号前面的"transferQ"我们可以定义为"queueKey", 在队列的发送端, 通过调用"Producer"类的send方法时指定, 指定后,就确定了队列的转发规则"topic.scdata.SC.VLR_EVENT"
       transferQ: topic.scdata.SC.VLR_EVENT
       defaultQ: topic.defaultQ.defaultE.defaultK
     

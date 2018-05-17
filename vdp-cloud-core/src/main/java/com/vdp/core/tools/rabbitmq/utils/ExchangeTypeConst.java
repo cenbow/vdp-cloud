@@ -1,4 +1,4 @@
-package com.vdp.core.tools.rabbitmq;
+package com.vdp.core.tools.rabbitmq.utils;
 
 /**
  * exchange类型常量

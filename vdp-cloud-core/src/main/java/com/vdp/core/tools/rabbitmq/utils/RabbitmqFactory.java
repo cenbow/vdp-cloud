@@ -1,4 +1,4 @@
-package com.vdp.core.tools.rabbitmq;
+package com.vdp.core.tools.rabbitmq.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +23,10 @@ public class RabbitmqFactory {
 	private RabbitAdmin rabbitAdmin;
 	
 	public Queue newQueue(String queueName) {
+		/*  
+         *   durable="true" 持久化 rabbitmq重启的时候不需要创建新的队列  
+         auto-delete 表示消息队列没有在使用时将被自动删除 默认是false  
+         exclusive  表示该消息队列是否只在当前connection生效,默认是false*/
 		Queue queue = new Queue(queueName,true);
 		rabbitAdmin.declareQueue(queue);
 		return queue;
