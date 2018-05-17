@@ -2,7 +2,7 @@
 ################## 1 all profile share config  ############
 ##########################################################
 
-container_config:
+containerConfig:
   transfer: 
     enabled: true
     tool: rabbitmq
@@ -15,28 +15,36 @@ container_config:
   archive: 
     enabled: true
     tool: mongodb
-server:
-  port: 8090
   
-### spring config  ###################
+###### spring config  ###################
 
 spring:
   profiles:
     active: development
+  ####redis配置
+  redis:
+  	model: single  ##single,sharded,cluster
+  	clusterNodes: 192.168.3.205:7001,192.168.3.205:7002,192.168.3.205:7003,192.168.3.205:7004,192.168.3.205:7005,192.168.3.205:7006
+  	commandTimeout: 30
+    password: wtx
+    expireSeconds: 120
+    soTimeout: 60000
+    maxAttempts: 3
+    maxTotal: 100
+    maxIdle: 40
+    minIdle: 20
+    maxWaitMillis: 3000
   rabbitmq:
     address: 192.168.3.19
     username: admin
     password: admin
-    publisherConfirms: true
-    queueName: 
-      transferQ: scdata.transferE.defaultK
-      defaultQ: defaultQ.defaultE
-    exchange:
-      transferE: scdataE
-      defaultE: defaultE
-    keys:
-      scdataK: scdataK
-      defaultK: defaultK
+    publisherConfirms: false
+    virtualHost: /
+    queueNames:
+      ##格式为:"exchange类型.数据类型.生产者.消费者",   "数据类型"作为exchange,   "生产者.消费者"作为routeKey,  整个作为queue名称,  "-"是yml中的格式, 请忽略
+      transferQ: topic.scdata.SC.VLR_EVENT
+      defaultQ: topic.defaultQ.defaultE.defaultK
+    
     
 ### mybatis-plus config  #################
 
