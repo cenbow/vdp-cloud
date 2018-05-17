@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 import com.google.common.collect.Lists;
 
 @Component
-@ConditionalOnExpression("${container_config.transfer.enabled}")
-@ConditionalOnProperty(name = "container_config.transfer.tool", havingValue = "rabbitmq")
+@ConditionalOnExpression("${container_config.msgqueue.enabled}")
+@ConditionalOnProperty(name = "container_config.msgqueue.tool", havingValue = "rabbitmq")
 public class RabbitmqFactory {
 	
 	@Autowired

@@ -23,8 +23,8 @@ import com.vdp.core.tools.rabbitmq.config.RabbitProps;
  * @author longxn
  */
 @Component
-@ConditionalOnExpression("${container_config.transfer.enabled}")
-@ConditionalOnProperty(name = "container_config.transfer.tool", havingValue = "rabbitmq")
+@ConditionalOnExpression("${container_config.msgqueue.enabled}")
+@ConditionalOnProperty(name = "container_config.msgqueue.tool", havingValue = "rabbitmq")
 public class RabbitmqUtil {
 
 	@Autowired

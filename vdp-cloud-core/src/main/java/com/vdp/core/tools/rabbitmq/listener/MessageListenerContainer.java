@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnExpression("${container_config.transfer.enabled}")
-@ConditionalOnProperty(name = "container_config.transfer.tool", havingValue = "rabbitmq")
+@ConditionalOnExpression("${container_config.msgqueue.enabled}")
+@ConditionalOnProperty(name = "container_config.msgqueue.tool", havingValue = "rabbitmq")
 public class MessageListenerContainer {
 	/**
 	 * MessageListenerContainer 观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象
